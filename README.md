@@ -1,7 +1,10 @@
 # AzureAdventCalendar2019Demo
-Demo repository of Azure SQL Serverless Database + Azure Functions application for load testing
+Demo repository of Azure SQL Serverless Database + Azure Functions C# application for load testing.
+https://azureadventcalendar.com/ 
+https://www.youtube.com/channel/UCJL9wCcmeMBbah4J0uOWIPg
 
-Goal is to observe Azure SQL Serveless Database behavior under load from Azure Functions.
+Goal is to observe Azure SQL Serveless Database behavior under the load from Azure Functions.
+Loader.io free account is used for load testing.
 
 Azure CLI for solution infrastructure.
 
