@@ -83,8 +83,6 @@ az functionapp update --resource-group $groupName --name $applicationName --set 
 az functionapp identity assign --resource-group $groupName --name $applicationName
 
 az functionapp config appsettings set --resource-group $groupName --name $applicationName --settings "MSDEPLOY_RENAME_LOCKED_FILES=1"
-az functionapp config appsettings set --resource-group $groupName --name $applicationName --settings "SqlConnectionString=$sqlConString"
-az functionapp config appsettings set --resource-group $groupName --name $applicationName --settings "SqlConnectionPassword=$password"
 
 managedIdKey=$(az functionapp identity show --name $applicationName --resource-group $groupName --query principalId --o tsv)
 echo "Managed Id key = " $managedIdKey
@@ -128,6 +126,9 @@ echo "SQL Connection string is = " $sqlConString
 
 # on your PC run CMD as administrator, then execute following commands and reboot PC.
 # just copy command output below to CMD and execute.
+
+az functionapp config appsettings set --resource-group $groupName --name $applicationName --settings "SqlConnectionString=$sqlConString"
+az functionapp config appsettings set --resource-group $groupName --name $applicationName --settings "SqlConnectionPassword=$password"
 
 echo "setx SqlConnectionString \""$sqlConString\"
 echo "setx SqlConnectionPassword "$password
