@@ -60,9 +60,6 @@ az resource create --resource-group $groupName --name $insightsName --resource-t
 insightsKey=$(az resource show -g $groupName -n $insightsName --resource-type "Microsoft.Insights/components" --query properties.InstrumentationKey --o tsv) 
 echo "Insights key = " $insightsKey
 
-# on your PC run CMD as administrator, then execute following commands and reboot PC.
-# just copy command output below to CMD and execute.
-echo "setx APPINSIGHTS_INSTRUMENTATIONKEY "$insightsKey
 
 #----------------------------------------------------------------------------------
 # Function app with consumption plan. Use KeyVault in production :)
@@ -130,6 +127,10 @@ echo "SQL Connection string is = " $sqlConString
 az functionapp config appsettings set --resource-group $groupName --name $applicationName --settings "SqlConnectionString=$sqlConString"
 az functionapp config appsettings set --resource-group $groupName --name $applicationName --settings "SqlConnectionPassword=$password"
 
+# on your PC run CMD as administrator, then execute following commands and reboot PC.
+# just copy command output below to CMD and execute.
+echo "setx APPINSIGHTS_INSTRUMENTATIONKEY "$insightsKey
+echo "setx StorageConnectionString \""$connString\"
 echo "setx SqlConnectionString \""$sqlConString\"
 echo "setx SqlConnectionPassword "$password
 
