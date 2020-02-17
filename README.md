@@ -1,6 +1,7 @@
-# AzureAdventCalendar2019Demo
+# Azure Advent Calendar 2019 SQL Serverless.
 Demo repository of Azure SQL Serverless Database + Azure Functions C# application for load testing.
 https://azureadventcalendar.com/ 
+
 https://www.youtube.com/channel/UCJL9wCcmeMBbah4J0uOWIPg
 
 Goal is to observe Azure SQL Serveless Database behavior under the load from Azure Functions.
