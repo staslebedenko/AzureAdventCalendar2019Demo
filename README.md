@@ -58,7 +58,7 @@ echo "insightsName  = " $insightsName
 # drop this command with ctrl+c after 3 minutes of execution
 az resource create --resource-group $groupName --name $insightsName --resource-type "Microsoft.Insights/components" --location $location --properties '{"Application_Type":"web"}' --verbose
 
-insightsKey=$(az resource show -g $groupName -n $insightsName --resource-type "Microsoft.Insights/components" --query properties.InstrumentationKey --o tsv) 
+insightsKey=$(az resource show -g $groupName -n $insightsName --resource-type "Microsoft.Insights/components" --query properties.InstrumentationKey --output tsv) 
 echo "Insights key = " $insightsKey
 
 
@@ -82,7 +82,7 @@ az functionapp identity assign --resource-group $groupName --name $applicationNa
 
 az functionapp config appsettings set --resource-group $groupName --name $applicationName --settings "MSDEPLOY_RENAME_LOCKED_FILES=1"
 
-managedIdKey=$(az functionapp identity show --name $applicationName --resource-group $groupName --query principalId --o tsv)
+managedIdKey=$(az functionapp identity show --name $applicationName --resource-group $groupName --query principalId --output tsv)
 echo "Managed Id key = " $managedIdKey
 
 #----------------------------------------------------------------------------------
@@ -117,7 +117,7 @@ done
 sqlClientType=ado.net
 
 #TODO add Admin login and remove password, set to variable.
-sqlConString=$(az sql db show-connection-string --name $databaseName --server $serverName --client $sqlClientType --o tsv)
+sqlConString=$(az sql db show-connection-string --name $databaseName --server $serverName --client $sqlClientType --output tsv)
 sqlConString=${sqlConString/Password=<password>;}
 sqlConString=${sqlConString/<username>/$adminLogin}
 echo "SQL Connection string is = " $sqlConString
